@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<h3>Lista de grupos</h3>
+
+<a href="grupos/nuevo" class="btn btn-primary">Crear grupo nuevo</a>
+
+  <div class="row groups-wraper">
+      {% for grupo in grupos %}
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-header">
+                Grupo: {{ grupo.name }}
+            </div>
+
+            <img src="{% static "img/img1.png" %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <p class="card-text">Alumnos: {{ grupo.students_set.count }}</p>
+              <a href="{% url 'grupo_lista' grupo.id %}" class="btn btn-primary">Entrar al grupo</a>
+              <a href="{% url 'grupos_editar' grupo.id %}" class="btn btn-primary">Editar</a>
+              <a href="{% url 'grupos_eliminar' grupo.id %}" class="btn btn-danger">Eliminar</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+
+{% endblock %}

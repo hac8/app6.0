@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form id="add-list-form" method="POST" action="">
+
+            {% csrf_token %}
+
+
+            {{ form.as_p }}
+
+          <input type="submit" class="btn btn-primary" name="Agregar lista" value="Agregar alumno">
+
+        </form>
+
+{% if messages %}
+<div class="messages alert alert-success">
+    {% for message in messages %}
+    <h5 {% if message.tags %} class=" {{ message.tags }} alert-heading" {% endif %}> {{ message }} </h5>
+    {% endfor %}
+</div>
+{% endif %}
+
+<a href="/grupos" class="btn btn-secondary">¡Listo!</a>
+
+{% endblock %}

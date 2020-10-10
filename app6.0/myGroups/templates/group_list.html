@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Lista de alumnos de {{ grupo.name }} </h3>
+<a href="/grupos/nuevo/alumnos/" class="btn btn-primary btn-lista">Agregar alumnos</a>
+
+<table class="table table-striped">
+    <thead>
+<tr>
+    <th scope="col">Nombre/s</th>
+    <th scope="col">Apellido Paterno</th>
+    <th scope="col">Apellido Materno</th>
+  </tr>
+</thead>
+    <tbody>
+{% for alumno in alumnos %}
+<tr>
+    <th scope="row">{{ alumno.name|capfirst }}</th>
+    <td>{{ alumno.last_name|capfirst }}</td>
+    <td>{{ alumno.second_last_name|capfirst }}</td>
+  </tr>
+{% endfor %}
+
+<tbody>
+</table>
+{% endblock %}
